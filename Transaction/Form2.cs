@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace Transaction
+
 {
     public partial class Form2 : Form
     {
@@ -22,17 +23,12 @@ namespace Transaction
        
 private void button1_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn;
-            string myConnectionString;
-            myConnectionString = "server=localhost;uid=root;" + "pwd=1234;database=database";
-            conn = new MySqlConnection(); 
-            conn.ConnectionString = myConnectionString;
+            MySqlConnection conn = new MySqlConnection();
+            conn.ConnectionString = "server=localhost;uid=root;" + "pwd=1515;database=database";
             conn.Open();
 
             MySqlDataAdapter MyDA = new MySqlDataAdapter();
-            //  string query = "use `database`; " +
-            //   "call myProcedure('"+textBox1.Text+"')";
-            string query = "use `database`; call myProcedure ('"+textBox1.Text+"')";
+            string query = "use `database`; select a.first_name, a.last_name, b.address, b.city, b.postal_code from individual a left join customer b on a.cust_id = b.cust_id where a.first_name = '"+textBox1.Text+"';";
             MyDA.SelectCommand = new MySqlCommand(query, conn);
             DataTable table = new DataTable();
             MyDA.Fill(table);
@@ -43,6 +39,11 @@ private void button1_Click(object sender, EventArgs e)
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
         {
 
         }

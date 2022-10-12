@@ -20,22 +20,19 @@ namespace Transaction
 
         private void Button_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn;
-            string myConnectionString;
-            myConnectionString = "server=localhost;uid=root;" + "pwd=1234;database=database";
-            conn = new MySqlConnection();
-            conn.ConnectionString = myConnectionString;
-            conn.Open();
+            MySqlConnection connection = new MySqlConnection();
+;           connection.ConnectionString = "server=localhost;uid=root;" + "pwd=1515;database=database";
+            connection.Open();
             try
             {
-                string query = "use `database`; call Anketa(\"" + textBox1.Text + "\",\"" + textBox2.Text + "\",\"" + textBox3.Text + "\", \"" + textBox4.Text + "\",\"" + textBox5.Text + "\", \"" + textBox6.Text + "\")";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
+                string query = "use `database`; call Anketa('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "', '" + textBox4.Text + "','" + textBox5.Text + "', '" + textBox6.Text + "')";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Спасибо за прохождение анкеты");
             }
             catch (Exception ex)
             { 
-                MessageBox.Show("Произошла ошибка");
+                MessageBox.Show(ex.Message);
             }
 
         }
