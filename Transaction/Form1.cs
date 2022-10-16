@@ -22,7 +22,7 @@ namespace Transaction
         {
             MySqlConnection conn;
             string myConnectionString;
-            myConnectionString = "server=localhost;uid=root;" + "pwd=1515;database=database";
+            myConnectionString = "server=localhost;uid=root;" + "pwd=1234;database=database";
             conn = new MySqlConnection();
             conn.ConnectionString = myConnectionString;
             conn.Open();

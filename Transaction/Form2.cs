@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +24,7 @@ private void button1_Click(object sender, EventArgs e)
         {
             MySqlConnection conn;
             string myConnectionString;
-            myConnectionString = "server=localhost;uid=root;" + "pwd=1515;database=database";
+            myConnectionString = "server=localhost;uid=root;" + "pwd=1234;database=database";
             conn = new MySqlConnection(); 
             conn.ConnectionString = myConnectionString;
             conn.Open();
